@@ -1,4 +1,4 @@
-## That is maze game development by Xiaohui Ling using C++ SFML Framework.
+## That is maze game development by Xiaohui Ling using C++ on SFML Framework.
 
 ## Development Environment
 1. Visual Studio 2017
