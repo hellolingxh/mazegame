@@ -692,7 +692,6 @@ public:
 
 };
 
-void intersects(int row, int col, sf::Texture& explode_texture, Game game, sf::RenderWindow window);
 
 int main() {
 	

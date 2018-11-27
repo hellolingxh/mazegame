@@ -9,7 +9,7 @@
 
 ### Maze Game Pictures
 ![maze game picture 1](http://www.didadadi.com/static/images/pic1.png)
-![maze game picture 2](http://www.didadadi.com/static/images/pic3.png)
+![maze game picture 2](http://www.didadadi.com/static/images/pic2.png)
 ![maze game picture 3](http://www.didadadi.com/static/images/pic3.png)
 ![maze game picture 4](http://www.didadadi.com/static/images/pic4.png)
 ![maze game picture 5](http://www.didadadi.com/static/images/pic5.png)
