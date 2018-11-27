@@ -4,6 +4,9 @@
 1. Visual Studio 2017
 2. SFML Framework 2.5.1
 
+### Main cpp File
+1. startGame.cpp
+
 ### Maze Game Pictures
 ![maze game picture 1](http://www.didadadi.com/static/images/pic1.png)
 ![maze game picture 2](http://www.didadadi.com/static/images/pic3.png)
