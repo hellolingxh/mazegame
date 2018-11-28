@@ -319,17 +319,12 @@ class Enemy : public Movable
 private:
 	LifeEntityStatus status;
 	sf::Clock randomClock;
-	int seq;
 
 public:
 	Enemy() {
 		this->status = LifeEntityStatus::NORMAL;
 		this->type = CellType::ENEMY;
 		this->randomClock.restart();
-	}
-
-	void setSeq(int seq) {
-		this->seq = seq;
 	}
 
 	void randomPosition(Cell* corridors, int corridorQuantity, int randomNum) {
