@@ -444,86 +444,228 @@ private:
 		myfile.close();
 
 	}
-	// up direction exploded
-	void addAvailableExplodedCellsUpDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (row - c) >= 0; c++) {
+
+        // up direction exploded
+	bool addAvailableExplodedCellsUpDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row - c >= 0) {
+
 			Cell cell = grid[row - c][col];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
 
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// down direction exploded
-	void addAvailableExplodedCellsDownDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (row + c) <= MAP_ROWS * BLOCK_HEIGHT; c++) {
+
+	bool addAvailableExplodedCellsDownDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row + c <= MAP_ROWS * BLOCK_HEIGHT) {
+
 			Cell cell = grid[row + c][col];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// left direction exploded
-	void addAvailableExplodedCellsLeftDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col - c) >= 0; c++) {
+
+	bool addAvailableExplodedCellsLeftDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (col - c >= 0) {
+
 			Cell cell = grid[row][col - c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// right direction exploded
-	void addAvailableExplodedCellsRightDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col + c) <= MAP_COLS * BLOCK_WIDTH; c++) {
+
+	bool addAvailableExplodedCellsRightDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (col + c <= MAP_COLS * BLOCK_WIDTH) {
+
 			Cell cell = grid[row][col + c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// up left direction exploded
-	void addAvailableExplodedCellsUpLeftDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col - c) >= 0 && (row - c) >= 0; c++) {
+
+	bool addAvailableExplodedCellsUpLeftDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row - c >= 0 && col - c >= 0) {
+
 			Cell cell = grid[row - c][col - c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// down left direction exploded
-	void addAvailableExplodedCellsDownLeftDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col - c) >= 0 && (row + c) <= MAP_ROWS * BLOCK_HEIGHT; c++) {
+
+	bool addAvailableExplodedCellsDownLeftDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row + c <= MAP_ROWS * BLOCK_HEIGHT && col - c >= 0) {
+
 			Cell cell = grid[row + c][col - c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+		
+
+		return isWall;
+
 	}
+
 	// up right direction exploded
-	void addAvailableExplodedCellsUpRightDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col + c) <= MAP_COLS * BLOCK_WIDTH && (row - c) >= 0; c++) {
+
+	bool addAvailableExplodedCellsUpRightDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row - c >= 0 && col + c <= MAP_COLS * BLOCK_WIDTH) {
+
 			Cell cell = grid[row - c][col + c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
+
 	// down right direction exploded
-	void addAvailableExplodedCellsDownRightDirection(int row, int col) {
-		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE && (col + c) <= MAP_COLS * BLOCK_WIDTH && (row + c) <= MAP_ROWS * BLOCK_HEIGHT; c++) {
+
+	bool addAvailableExplodedCellsDownRightDirection(int row, int col, int c) {
+
+		bool isWall = false;
+
+		if (row + c <= MAP_ROWS * BLOCK_WIDTH && col + c <= MAP_COLS * BLOCK_WIDTH) {
+
 			Cell cell = grid[row + c][col + c];
-			if (cell.getCellType() == CellType::CORRIDOR) {
+
+			isWall = cell.getCellType() == CellType::WALL ? true : false;
+
+			if (!isWall)
+
 				this->availableExplodedCells[this->availableExplodedCellsCounter++] = cell;
-			}else
-				break;
+
 		}
+
+		else
+
+			isWall = true;
+
+
+
+		return isWall;
+
 	}
 
 public:
@@ -572,30 +714,47 @@ public:
 	Cell* getAvailablExplodedCells(int row, int col) {
 		
 		this->availableExplodedCellsCounter = 0;
-		
-		//up direction cell of the bomb current position.
-		this->addAvailableExplodedCellsUpDirection(row, col);
-		//down direction cell of the bomb current position.
-		this->addAvailableExplodedCellsDownDirection(row, col);
-		//left direction cell of the bomb current position.
-		this->addAvailableExplodedCellsLeftDirection(row, col);
-		//right direction cell of the bomb current position.
-		this->addAvailableExplodedCellsRightDirection(row, col);
+                
+                bool upDirectionCellIsWall = false;
+		bool downDirectionCellIsWall = false;
+		bool leftDirectionCellIsWall = false;
+		bool rightDirectionCellIsWall = false;
+		bool upLeftDirectionCellIsWall = false;
+		bool downLeftDirectionCellIsWall = false;
+		bool upRightDirectionCellIsWall = false;
+		bool downRightDirectionCellIsWall = false;
 
-		if (EXPLODED_DIRECTIONS > 4) { //if the exploded direction more than 4, then using 8 direction exploded range.
-			//up left direction cell of the bomb current position
-			this->addAvailableExplodedCellsUpLeftDirection(row, col);
-			//up right direction cell of the bomb current position
-			this->addAvailableExplodedCellsUpRightDirection(row, col);
-			//down left direction cell of the bomb current position
-			this->addAvailableExplodedCellsUpLeftDirection(row, col);
-			//down right direction cell of the bomb current position
-			this->addAvailableExplodedCellsDownRightDirection(row, col);
+		for (int c = 1; c <= BOMB_EXPLODE_GRID_RANGE; c++) {
 
+			if(!upDirectionCellIsWall)
+				upDirectionCellIsWall = addAvailableExplodedCellsUpDirection(row, col, c);
+					
+			if (!downDirectionCellIsWall)
+				downDirectionCellIsWall = addAvailableExplodedCellsDownDirection(row, col, c);
+
+			if (!leftDirectionCellIsWall)
+				leftDirectionCellIsWall = addAvailableExplodedCellsLeftDirection(row, col, c);
+
+			if (!rightDirectionCellIsWall)
+				rightDirectionCellIsWall = addAvailableExplodedCellsRightDirection(row, col, c);
+
+			if(EXPLODED_DIRECTIONS > 4){//the exploded takes advantage of 8 directions.
+
+				if (!upLeftDirectionCellIsWall)
+					upLeftDirectionCellIsWall = addAvailableExplodedCellsUpLeftDirection(row, col, c);
+
+				if (!downLeftDirectionCellIsWall)
+					downLeftDirectionCellIsWall = addAvailableExplodedCellsDownLeftDirection(row, col, c);
+
+				if (!upRightDirectionCellIsWall)
+					upRightDirectionCellIsWall = addAvailableExplodedCellsUpRightDirection(row, col, c);
+
+				if (!downRightDirectionCellIsWall)
+					downRightDirectionCellIsWall = addAvailableExplodedCellsDownRightDirection(row, col , c);
+			}
 		}
-		
+
 		return this->availableExplodedCells;
-	
 	}
 
 	int getAvailableExplodedCellsCounter() {
