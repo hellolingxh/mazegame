@@ -7,6 +7,12 @@
 ### Main cpp File
 1. startGame.cpp
 
+### Configurable Map File
+0 indicates corridors,
+1 indicates walls
+
+![maze_game_mpa_config_file](http://www.didadadi.com/static/images/mazegamemap.png)
+
 ### Maze Game Pictures
 ![maze game picture 1](http://www.didadadi.com/static/images/pic1.png)
 ![maze game picture 2](http://www.didadadi.com/static/images/pic2.png)
